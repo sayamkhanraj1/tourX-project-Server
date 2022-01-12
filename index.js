@@ -25,7 +25,7 @@ async function run() {
                   const orderCollection = database.collection('myOrders');
                   const blogCollection = database.collection('blog')
                   const destinationCollection = database.collection('destination')
-                  const reviewsCollection = database.collection('reviews');
+                  const reviewsCollection = database.collection('userReviews');
 
                   //get all data
                   app.get('/packages', async(req, res) =>{
@@ -76,6 +76,17 @@ async function run() {
                   const deleteOrder = await orderCollection.deleteOne({_id: (req.params.id)})
                   res.send(deleteOrder)
                 })
+                // addUserReview Section
+                 app.get('/userReviews', async(req, res) =>{
+                const result = await reviewsCollection.find({}).toArray();
+                res.json(result);
+                  });
+                // add review on data base
+                app.post('/userReviews', async(req, res)=>{
+                const review = req.body;
+                const result = await reviewsCollection.insertOne(userReviews);
+                res.json(result);
+                });
 
                   
          }
