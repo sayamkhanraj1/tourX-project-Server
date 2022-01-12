@@ -25,6 +25,8 @@ async function run() {
                   const orderCollection = database.collection('myOrders');
                   const blogCollection = database.collection('blog')
                   const destinationCollection = database.collection('destination')
+                  const reviewsCollection = database.collection('reviews');
+
                   //get all data
                   app.get('/packages', async(req, res) =>{
                     const result = await tourCollection.find({}).toArray();
