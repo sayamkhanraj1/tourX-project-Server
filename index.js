@@ -83,7 +83,7 @@ async function run() {
                   });
                 // add review on data base
                 app.post('/userReviews', async(req, res)=>{
-                const review = req.body;
+                const userReviews = req.body;
                 const result = await reviewsCollection.insertOne(userReviews);
                 res.json(result);
                 });
