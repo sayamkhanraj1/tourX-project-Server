@@ -76,12 +76,12 @@ async function run() {
                   const deleteOrder = await orderCollection.deleteOne({_id: (req.params.id)})
                   res.send(deleteOrder)
                 })
-                // addUserReview Section
+                // addUserReview Sections
                  app.get('/userReviews', async(req, res) =>{
                 const result = await reviewsCollection.find({}).toArray();
                 res.json(result);
                   });
-                // add review on data base
+                // add review on data base 
                 app.post('/userReviews', async(req, res)=>{
                 const user = req.body;
                 const result = await reviewsCollection.insertOne(user);
